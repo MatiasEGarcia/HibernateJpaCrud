@@ -1,26 +1,20 @@
 package hibernatejpacrud.hibernatejpacrud;
 
-import javax.persistence.EntityManager;
+import java.util.Collection;
 
-import hibernatejpacrud.hibernatejpacrud.dao.CourseDao;
-import hibernatejpacrud.hibernatejpacrud.dao.PersistenceManager;
 import hibernatejpacrud.hibernatejpacrud.domain.Course;
+import hibernatejpacrud.hibernatejpacrud.service.CourseServiceImpl;
 
 public class HibernateJpaCrud {
 
     public static void main(String[] args) {
         System.out.println("Testing --------");
         
-        EntityManager em = PersistenceManager.getInstance().createEntityManager();
-        em.getTransaction().begin();
+        CourseServiceImpl courseService = new CourseServiceImpl();
         
-        CourseDao courseDao= new CourseDao(em);
-        
-        Course historyCourse = new Course("History",1500);
-        
-        courseDao.create(historyCourse);
-        em.getTransaction().commit();
-        em.close();
-        System.out.println(historyCourse); //I have the object synchronized with the bdd
+        /*Get all courses
+        Collection<Course> courses = courseService.getAll();
+        System.out.println("Los cursos son:" + courses );
+        */
     }
 }

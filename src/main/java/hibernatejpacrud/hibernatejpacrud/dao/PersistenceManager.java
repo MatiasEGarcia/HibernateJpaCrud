@@ -33,7 +33,7 @@ public class PersistenceManager {
 	}
 	
 	public EntityManager createEntityManager() {
-		return emf.createEntityManager();
+		return emf.createEntityManager(); //Always the same EntityManagerFactory but different EntityManager
 	}
 	
 	

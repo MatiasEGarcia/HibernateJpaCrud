@@ -1,10 +1,12 @@
 package hibernatejpacrud.hibernatejpacrud.dao;
 
+import java.util.Collection;
+
 import javax.persistence.EntityManager;
 
 public abstract class Dao<T,K> {
 	
-	EntityManager em;
+	protected EntityManager em;
 	
 	public Dao(EntityManager em) {
 		this.em = em;
@@ -15,6 +17,8 @@ public abstract class Dao<T,K> {
 	}
 	
 	public abstract T find(K id);
+	
+	public abstract Collection<T> findAll();
 	
 	public T create(T t) {
 		checkTransaction();
@@ -35,7 +39,7 @@ public abstract class Dao<T,K> {
 		em.remove(t);
 	}
 	
-	private void checkTransaction() {
+	protected void checkTransaction() {
 		if(!em.getTransaction().isActive()) {
 			throw new RuntimeException("Inactive Transaction");
 		}
