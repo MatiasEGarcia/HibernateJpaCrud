@@ -2,10 +2,16 @@ package hibernatejpacrud.hibernatejpacrud.domain;
 
 import java.util.Objects;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
+@AttributeOverrides({
+	  @AttributeOverride( name = "country", column = @Column(name = "country")),
+	  @AttributeOverride( name = "address", column = @Column(name = "address"))
+	})
 public class Address {
 
 	@Column(name= "country")
