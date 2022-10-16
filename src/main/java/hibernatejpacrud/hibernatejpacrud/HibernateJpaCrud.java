@@ -16,5 +16,9 @@ public class HibernateJpaCrud {
         Collection<Course> courses = courseService.getAll();
         System.out.println("Los cursos son:" + courses );
         */
+        
+        
+        
+        
     }
 }
